@@ -5,8 +5,7 @@ echo "It is used to send v2ray log to your mail by mailx"
 echo "It will creat a temp file in tmp folder"
 dir="/tmp/v2ray_log/"
 mkdir -p $dir
-cat /var/log/v2ray/error.log | grep `date +%y/%m/%d` >> $dir"v2ray.log"
-cat $dir"v2ray.log" | grep "creating connection to" >> $dir"v2ray_connection.log"
+cat /var/log/v2ray/error.log | grep `date +%y/%m/%d` | grep "creating connection to" >> $dir"v2ray_connection.log"
 echo "collection connecting infomation finished"
 cd /usr/v2ray_loger
 ./a.out
@@ -16,8 +15,12 @@ i=`cat /tmp/ip.db | wc -l`
 until [ $i -le 0 ]
 do
 ip=`sed -n "$i p " /tmp/ip.db`
+cat /var/log/v2ray/error.log | grep `date +%y/%m/%d` | grep -E "terminating connection to|creating connection to" | grep $ip >> $dir"temp.log"
+cd /usr/v2ray_loger
+./b.out
 dest=`curl http://freeapi.ipip.net/$ip`
 echo $ip $dest >> /tmp/ip_result.log
+cat $dir"ip_connection.log" >> /tmp/ip_result.log
 sleep 5
 ((i--))
 done
