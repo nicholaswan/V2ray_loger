@@ -42,8 +42,6 @@ read a
 echo "mailx 部署脚本可以使用我的 mailx部署脚本"
 echo "https://github.com/sjz123321/mailx-bash-shell-1  回车键继续"
 read a
-apt-get update && apt-get install gcc -y
-apt-get install curl -y
 mkdir -p /usr/v2ray_loger/
 cp api.sh /usr/v2ray_loger/
 gcc process.c
