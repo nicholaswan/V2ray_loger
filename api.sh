@@ -22,7 +22,7 @@ dest=`curl http://freeapi.ipip.net/$ip`
 echo $ip $dest >> /tmp/ip_result.log
 cat $dir"ip_connection.log" >> /tmp/ip_result.log
 rm -f $dir"ip_connection.log"
-rm -f $dir"temp.log
+rm -f $dir"temp.log"
 sleep 5
 ((i--))
 done
