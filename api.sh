@@ -21,10 +21,13 @@ cd /usr/v2ray_loger
 dest=`curl http://freeapi.ipip.net/$ip`
 echo $ip $dest >> /tmp/ip_result.log
 cat $dir"ip_connection.log" >> /tmp/ip_result.log
+rm -f $dir"ip_connection.log"
+rm -f $dir"temp.log
 sleep 5
 ((i--))
 done
 echo "this is the connection log at `date`" | mail -s "project V LOG" -a /tmp/ip_result.log $mail_addr
+echo "邮件发送成功"
 
 cd /tmp
 rm -rf *
