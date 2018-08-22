@@ -8,7 +8,9 @@ mkdir -p $dir
 cat /var/log/v2ray/error.log | grep `date +%y/%m/%d` >> $dir"v2ray.log"
 cat $dir"v2ray.log" | grep "creating connection to" >> $dir"v2ray_connection.log"
 echo "collection connecting infomation finished"
+cd /usr/v2ray_loger
 ./a.out
+echo "如无法继续可能是今日并没有人使用v2ray服务器..."
 sort -u /tmp/ip_list_tmp.db >> /tmp/ip.db
 i=`cat /tmp/ip.db | wc -l`
 until [ $i -le 0 ]
