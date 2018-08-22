@@ -1,6 +1,42 @@
 #!/bin/bash
 
 chmod 777 *
+sver1=`cat /etc/issue | grep CentOS`
+sver2=`cat /etc/issue | grep Debian`
+sver3=`cat /etc/issue | grep Ubuntu`
+
+if [ "$sver1" != "" ] ; then
+	echo "你的系统是CentOS"
+	sys=1
+elif [ "$sver2" != "" ] ; then
+	echo "你的系统是Debian"
+	sys=2
+elif [ "$sver3" != "" ] ; then
+	echo "你的系统是Ubuntu"
+	sys=3
+else
+	echo "你的系统是unknow"
+	sys=0
+	exit
+fi
+
+case $sys in
+1) yum update
+   yum -y install gcc curl
+   
+   ;;
+   
+2) apt-get update
+   apt-get install gcc curl
+   
+   ;;
+   
+3) apt-get update
+   apt-get install gcc curl
+   
+   ;;
+   
+ esac
 echo "运行该脚本前请确定mailx已成功部署 回车键继续"
 read a
 echo "mailx 部署脚本可以使用我的 mailx部署脚本"
