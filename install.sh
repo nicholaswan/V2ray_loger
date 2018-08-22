@@ -9,9 +9,10 @@ read a
 apt-get update && apt-get install gcc -y
 apt-get install curl -y
 mkdir -p /usr/v2ray_loger/
-mv api.sh /usr/v2ray_loger/
+cp api.sh /usr/v2ray_loger/
 gcc process.c
-mv a.out /usr/v2ray_loger/
+cp a.out /usr/v2ray_loger/
+cp v2ray_loger.sh /usr/bin
 cd /tmp
 rm -rf *
 echo "请输入mail地址"
