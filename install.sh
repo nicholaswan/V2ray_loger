@@ -45,7 +45,9 @@ read a
 mkdir -p /usr/v2ray_loger/
 cp api.sh /usr/v2ray_loger/
 gcc process.c
+gcc -o b.out ip_connection.c
 cp a.out /usr/v2ray_loger/
+cp b.out /usr/v2ray_loger/
 cp v2ray_loger.sh /usr/bin
 cd /tmp
 rm -rf *
